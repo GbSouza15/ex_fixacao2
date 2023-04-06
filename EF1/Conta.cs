@@ -6,16 +6,16 @@ namespace EF1
 {
     internal class Conta
     {
-        private int _nConta;
-        private double _saldo;
+        public int NConta { get; private set; }
+        public double Saldo { get; private set; }
         public string NomeTitular;
         
         
         public Conta(string nomeTitular, int nConta)
         {
             NomeTitular = nomeTitular;
-            _nConta = nConta;
-            _saldo = 0;
+            NConta = nConta;
+            Saldo = 0;
         }
 
         public Conta(int nConta, string nomeTitular, double deposito) : this(nomeTitular, nConta)
@@ -25,24 +25,13 @@ namespace EF1
 
         public double Deposito(double deposito)
         {
-            return _saldo += deposito;
+            return Saldo += deposito;
         }
 
         public double Saque(double saque)
         {
             double valorComTaxa = saque + 5.0;
-            return _saldo -= valorComTaxa;
-        }
-
-
-        public double NConta
-        {
-            get { return _nConta; }
-        }
-
-        public double Saldo
-        {
-            get { return _saldo; }  
+            return Saldo -= valorComTaxa;
         }
 
         public override string ToString()
